@@ -1,0 +1,38 @@
+version: '3.7'
+        
+services:
+    app:
+        build:
+            context: ..
+            dockerfile: .devcontainer/Dockerfile
+        links:
+            - mysql
+        environment:
+            VARIANT: 7
+            INSTALL_NODE: 'true'
+            NODE_VERSION: 'lts/*'
+        volumes:
+            - ..:/workspace
+        user: vscode
+        command: sleep infinity
+    mysql:
+        image: mysql:5.7
+        container_name: appsDB
+        restart: always
+        ports:
+            - '3306:3306'
+        volumes:
+            - ../data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+    
+    phpmyadmin:
+        depends_on:
+            - mysql
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        restart: always
+        ports:
+            - '8080:80'
+        environment:
+            PMA_HOST: mysql

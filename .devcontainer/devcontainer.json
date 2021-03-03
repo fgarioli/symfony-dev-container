@@ -1,0 +1,33 @@
+{
+	"name": "PHP Sample",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
+	"forwardPorts": [
+		9501
+	],
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/zsh",
+		"php.executablePath": "/usr/local/bin/php",
+		"files.associations": {
+			"*.module": "php"
+		},
+		"php.suggest.basic": false,
+		"php.validate.enable": false
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"bmewburn.vscode-intelephense-client",
+		"neilbrayfield.php-docblocker",
+		"danilopolani.yet-another-phpunit",
+		"xyz.local-history",
+		"mikestead.dotenv"
+	],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "php -v",
+	// Comment out to use the root user instead. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
